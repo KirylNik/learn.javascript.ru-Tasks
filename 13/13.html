@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident molestias sit tempore omnis recusandae
+    esse sequi officia sapiente.</p>
+
+
+  <blockquote>
+    - Что на завтрак, Бэрримор? - Овсянка, сэр. - А на обед? - Овсянка, сэр. - Ну а на ужин? - Котлеты, сэр. - Уррра!!! - Из овсянки, сэр!!!
+  </blockquote>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident molestias sit tempore omnis recusandae
+    esse sequi officia sapiente.</p>
+
+
+  <script>
+    /**
+     * Позиционирует элемент elem относительно элемента anchor, как указано в
+     * в position.
+     *
+    /**
+     * Показывает заметку с текстом html на позиции position
+     * относительно элемента anchor
+     */
+    function showNote(anchor, position, html) {
+      let anchorPosition = anchor.getBoundingClientRect();
+      let div = document.createElement('div');
+      div.innerHTML = html;
+      div.setAttribute('class', 'note');
+      document.body.appendChild(div);
+      if (position == 'top') {
+        div.style.left = anchorPosition.left + 'px';
+        div.style.top = (anchorPosition.top - div.offsetHeight) + 'px';
+      }
+      else if (position == 'right') {
+        div.style.left = anchorPosition.right + 'px';
+        div.style.top = anchorPosition.top + 'px';
+      }
+      else if (position == 'bottom') {
+        div.style.left = anchorPosition.left + 'px';
+        div.style.top = anchorPosition.bottom + 'px';
+      }
+      else if (position == 'top-in') {
+        div.style.left = anchorPosition.left + 'px';
+        div.style.top = (anchorPosition.top) + 'px';
+      }
+      else if (position == 'right-in') {
+        div.style.left = (anchorPosition.right - div.offsetWidth) + 'px';
+        div.style.top = anchorPosition.top + 'px';
+      }
+      else if (position == 'bottom-in') {
+        div.style.left = anchorPosition.left + 'px';
+        div.style.top = (anchorPosition.bottom - div.offsetHeight) + 'px';
+      }
+
+    }
+
+    // проверка работоспособности
+    var blockquote = document.querySelector('blockquote');
+
+    showNote(blockquote, "top", "заметка сверху");
+    showNote(blockquote, "right", "заметка справа");
+    showNote(blockquote, "bottom", "заметка снизу");
+    showNote(blockquote, "top-in", "заметка сверху внутри");
+    showNote(blockquote, "right-in", "заметка справа внутри");
+    showNote(blockquote, "bottom-in", "заметка снизу внутри");
+  </script>
+
+
+</body>
+
+</html>

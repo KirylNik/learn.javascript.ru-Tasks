@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #field {
+      width: 200px;
+      height: 150px;
+      border: 10px groove black;
+      background-color: #00FF00;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #ball {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -20px;
+      margin-top: -20px;
+      width: 40px;
+      height: 40px;
+    }
+  </style>
+</head>
+
+<body style="height:2000px">
+
+  Кликните на любое место поля, чтобы мяч перелетел туда.
+  <br> Мяч никогда не вылетит за границы поля.
+
+
+  <div id="field">
+    <img src="https://js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+  <script>
+  	field.onclick = function (event) {
+  		let fieldPosition = this.getBoundingClientRect();
+  		let ballLeft = event.clientX - fieldPosition.left - this.clientLeft;
+  		let ballTop = event.clientY - fieldPosition.top - this.clientTop;
+
+  		if (ballLeft < this.clientLeft + (ball.offsetWidth / 2)) {
+  			ballLeft = ball.offsetWidth / 2;
+  		} else if (ballLeft > this.clientWidth - (ball.offsetWidth / 2)) {
+  			ballLeft = this.clientWidth - (ball.offsetWidth / 2);
+  		};
+
+  		if (ballTop < this.clientTop + (ball.offsetHeight / 2)) {
+  			ballTop = ball.offsetHeight / 2;
+  		} else if (ballTop > this.clientHeight - (ball.offsetHeight / 2)) {
+  			ballTop = this.clientHeight - (ball.offsetHeight / 2);
+  		};
+
+  		ball.style.left = ballLeft + 'px';
+  		ball.style.top = ballTop + 'px';
+  	};
+  </script>
+
+</body>
+
+</html>
